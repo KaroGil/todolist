@@ -2,8 +2,10 @@ import React, {useState} from "react";
 
 export const Additems = () => {
 
+    //task to add
     const [task, setTask] = useState("");
 
+    //array of tasks
     const [items, setItems] = useState(
         [
             {
@@ -17,6 +19,7 @@ export const Additems = () => {
 
     let id = items.length;
 
+    //what happens on form submit
     const onSubmit = (e) => {
         e.preventDefault();
         console.log("sub");
@@ -35,21 +38,19 @@ export const Additems = () => {
      
     }
 
+    //to delete a task
     const deleteItem = (props) => {
 
         const search = obj => obj.id === props;
         let index = items.findIndex(search)
-
-        console.log(index);
         items.splice(index, 1);
-        console.log(items);
         setItems([...items]);
     }
 
+    //to map out the different items in the array
     const content = items.map((item) =>
     <div key={item.id}>
         <h3>{item.task}</h3>
-        {/* <p>{item.completed.toString()}</p> */}
         <button onClick={()=> deleteItem(item.id)} className="delete-btn">x</button>
     </div>
     )
@@ -68,7 +69,9 @@ export const Additems = () => {
             </div>
             <button className="btn">Add item</button>
         </form>
+
         {content}
+        
         </>
     
     );
