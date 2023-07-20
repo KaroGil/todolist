@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import '../App.css';
 
 export const Additems = () => {
 
@@ -22,7 +23,6 @@ export const Additems = () => {
     //what happens on form submit
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("sub");
         if(task != ''){
             setItems([
                 ...items,
@@ -49,9 +49,9 @@ export const Additems = () => {
 
     //to map out the different items in the array
     const content = items.map((item) =>
-    <div key={item.id}>
-        <h3>{item.task}</h3>
-        <button onClick={()=> deleteItem(item.id)} className="delete-btn">x</button>
+    <div className="box" key={item.id}>
+        <h3 >{item.task}</h3>
+        <button className="dlt-btn" onClick={()=> deleteItem(item.id)}>x</button>
     </div>
     )
 
